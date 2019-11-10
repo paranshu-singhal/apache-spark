@@ -1,0 +1,1 @@
+This small project implementes the nearest neighbors (KNN) query using MapReduce. In the KNN query, the input is a set of points ( ) in the Euclidean space, a query point ( ), and an integer ( ). The output is the  points in that are closest to the query point. 
