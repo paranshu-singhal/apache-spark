@@ -1,0 +1,3 @@
+Executable to run the code:
+
+bin/spark-submit --class edu.ucr.cs.psing069.App --master local spark-1.0-SNAPSHOT.jar hdfs://localhost:9000/nasa.tsv
