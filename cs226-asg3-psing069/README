@@ -1,3 +1,34 @@
 Executable to run the code:
 
 bin/spark-submit --class edu.ucr.cs.psing069.App --master local spark-1.0-SNAPSHOT.jar hdfs://localhost:9000/nasa.tsv
+
+Description
+The goal of this assignment is to write some Spark RDD jobs and observe their running times.
+
+Details
+The input file is a log file that is stored in a tab-separated-value (TSV) format with the following attributes: host, logname, time, method, URL, response, bytes, referrer, useragent . Each line contains a record with the fields separated by the tab character ‘\t’. This project implements the following two queries in Spark RDD using Java.
+
+TASK -1
+
+Find the average number of bytes for lines of each response code. The answer should be in the following format:
+Code 200, average number of bytes = 17230.603516
+
+Code 304, average number of bytes = 0.000000
+
+Code 404, average number of bytes = 0.000000
+
+Code 302, average number of bytes = 73.253525
+
+TASK - 2
+
+Find pairs of requests that ask for the same URL, same host, and happened within an hour of each other (i.e., difference in time  3600). In other words, it produces all the pairs of the tuples (t1, t2) that satisfy the following conditions.
+t1.host = t2.host
+t1.url = t2.url
+|t1.timestamp – t2.timestamp| <= 3600
+t1 != t2
+For example, the following two records should appear in the answer because they satisfy the join conditions.
+
+(“n1123083.ksc.nasa.gov”,  “-“ , 807294692, “GET”, “/ksc.html”, 200, 7280)
+(“n1123083.ksc.nasa.gov”, “-“, 807295150, “GET”, “/ksc.html”, 200, 7280)
+
+The output is produced as a file that has one pair of records per line which lists all the attributes of the first record (separated by tab) then another tab character, and finally the attributes of the second record separated by tabs.
